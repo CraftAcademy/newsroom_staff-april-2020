@@ -1,9 +1,11 @@
 import React from 'react';
+import  LoginForm  from './components/LoginForm';
 
 function App() {
   return (
     <div className="App">
       Daily News Sense
+       <LoginForm></LoginForm>
     </div>
   );
 }
