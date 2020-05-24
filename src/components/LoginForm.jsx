@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Label, Input } from 'semantic-ui-react';
 import auth from '../modules/auth'
+import { Redirect } from 'react-router-dom' 
 
 const LoginForm = (props) => {
   const [message, setMessage] = useState("")
@@ -17,15 +18,20 @@ const LoginForm = (props) => {
     }
   }
 
+  const redirect = props.authenticated && <Redirect to={{pathname: '/write'}}/>
+
   return (
-    <Form  onSubmit={logIn} id="login-form" widths='equal' >
-      <Label>Email</Label>
-      <Input name='email' type='email' id='email'></Input>
-      <Label>Password</Label>
-      <Input name='password' type='password' id='password'></Input>
-      <Button id='submit'>Submit</Button>
-      <p id="error-message">{message}</p>
-    </Form>
+    <>
+      {redirect}
+      <Form  onSubmit={logIn} id="login-form" widths='equal' >
+        <Label>Email</Label>
+        <Input name='email' type='email' id='email'></Input>
+        <Label>Password</Label>
+        <Input name='password' type='password' id='password'></Input>
+        <Button id='submit'>Submit</Button>
+        <p id="error-message">{message}</p>
+      </Form>
+    </>
   )
 }
 

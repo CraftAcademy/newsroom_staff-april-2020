@@ -4,7 +4,8 @@ describe('Journalist authenticates', () => {
     cy.visit('/');
   });
 
-  it('does not see the article form', () => {
+  it('cannot go to write page', () => {
+    cy.visit('/write');
     cy.get('button#post').should('not.exist')
   })
 
