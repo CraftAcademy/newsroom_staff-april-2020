@@ -7,7 +7,15 @@ describe('Journalist authenticates', () => {
   it('successfully with valid credentials', () => {
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/auth/sign_in",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:successful_login.json",
+      headers: {
+        uid:"user@mail.com"
+      }
+    })
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/auth/*",
       response: "fixture:successful_login.json",
       headers: {
         uid:"user@mail.com"
@@ -18,7 +26,7 @@ describe('Journalist authenticates', () => {
       cy.get('#password').type('password');
       cy.get('Button').contains('Submit').click();
     });
-    cy.get('#message').should('contain', 'Welcome to work user@mail.com');
+    cy.get('#header').should('contain', 'Log out user@mail.com');
   });
 
   it("unsuccessfully with invalid credentials", () => {
@@ -35,6 +43,6 @@ describe('Journalist authenticates', () => {
       cy.get("#password").type("wrongpassword");
       cy.get('Button').contains('Submit').click()
     });
-    cy.get("#message").should("contain", "Invalid login credentials, please try again.");
+    cy.get("#error-message").should("contain", "Invalid login credentials");
   });
 });

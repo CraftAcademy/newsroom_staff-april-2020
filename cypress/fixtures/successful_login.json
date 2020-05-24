@@ -1,9 +1,10 @@
 {
+  "success": true,
   "data": {
-    "id": 12,
-    "email": "mystring@mail.com",
+    "id": 1,
+    "email": "user@mail.com",
     "provider": "email",
-    "uid": "mystring@mail.com",
+    "uid": "user@mail.com",
     "allow_password_change": false
   }
 }
