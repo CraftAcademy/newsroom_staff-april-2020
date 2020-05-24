@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header uid={uid} authenticated={authenticated}/>
+      <Header uid={uid} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
       <Switch>
         <Route exact path="/" render={() => <LoginForm setAuthenticated={setAuthenticated} setUid={setUid} authenticated={authenticated}/>}  />
         <Route path="/login" render={() => <LoginForm setAuthenticated={setAuthenticated} setUid={setUid} authenticated={authenticated}/>} />
