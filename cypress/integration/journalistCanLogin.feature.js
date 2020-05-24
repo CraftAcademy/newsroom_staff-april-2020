@@ -8,7 +8,7 @@ describe('Journalist authenticates', () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/auth/sign_in",
-      response: "fixture:login.json",
+      response: "fixture:successful_login.json",
       headers: {
         uid:"user@mail.com"
       }
@@ -22,6 +22,14 @@ describe('Journalist authenticates', () => {
   });
 
   it("unsuccessfully with invalid credentials", () => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/auth/sign_in",
+      response: "fixture:unsuccessful_login.json",
+      headers: {
+        uid:"user@mail.com"
+      }
+    })
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("wrongpassword");
