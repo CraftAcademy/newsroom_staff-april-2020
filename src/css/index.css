@@ -18,6 +18,11 @@ p {
   padding: 20px;
 }
 
+.header > * {
+  font-family: "Quattrocento", serif;
+  color: white;
+}
+
 .writing-container {
   float: left; 
   padding-left: 20px; 
