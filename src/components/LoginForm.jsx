@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Label, Input } from 'semantic-ui-react';
 import auth from '../modules/auth'
 import { Redirect } from 'react-router-dom' 
@@ -9,11 +9,9 @@ const LoginForm = (props) => {
   const logIn = async (e) => {
     try {
       const response = await auth.signIn(e.target.email.value, e.target.password.value)
-      debugger
       props.setUid(response.data.uid)
       props.setAuthenticated(true)
     } catch(error) {
-      debugger
       setMessage(error.response.data.errors[0])
     }
   }
