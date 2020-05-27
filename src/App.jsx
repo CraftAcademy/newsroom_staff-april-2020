@@ -5,6 +5,7 @@ import CreateSubscription from './components/CreateSubscription'
 import Header from "./components/Header";
 import { Switch, Route } from "react-router-dom";
 import auth from "./modules/auth";
+import { Elements } from 'react-stripe-elements'
 
 const App = () => {
   const [uid, setUid] = useState("");
@@ -52,7 +53,13 @@ const App = () => {
         />
         <Route
           path="/subscription"
-          component={CreateSubscription}
+          render={
+            () => (
+              <Elements>
+                <CreateSubscription />
+              </Elements>
+            )
+          }
         />
       </Switch>
     </div>

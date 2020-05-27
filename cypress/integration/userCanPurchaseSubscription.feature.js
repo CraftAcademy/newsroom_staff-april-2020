@@ -35,5 +35,8 @@ describe('user can purchase a subscription', () => {
       .contains("Buy Subscription")
       .click()
     cy.get("form[id='payment-form']").should('be.visible')
+    cy.wait(1000)
+    cy.typeInStripeElement("cardnumber", "4242424242424242")
   });
+
 });
