@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
 import CreateArticle from "./components/CreateArticle";
+import CreateSubscription from './components/CreateSubscription'
 import Header from "./components/Header";
 import { Switch, Route } from "react-router-dom";
 import auth from "./modules/auth";
+import { Elements } from 'react-stripe-elements'
 
 const App = () => {
   const [uid, setUid] = useState("");
@@ -48,6 +50,18 @@ const App = () => {
         <Route
           path="/write"
           component={CreateArticle}
+        />
+        <Route
+          path="/subscription"
+          render={
+            () => {
+              return (
+                <Elements>
+                  <CreateSubscription />
+                </Elements>
+              )
+            }
+          }
         />
       </Switch>
     </div>
