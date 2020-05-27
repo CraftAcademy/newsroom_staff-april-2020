@@ -54,11 +54,13 @@ const App = () => {
         <Route
           path="/subscription"
           render={
-            () => (
-              <Elements>
-                <CreateSubscription />
-              </Elements>
-            )
+            () => {
+              return (
+                <Elements>
+                  <CreateSubscription />
+                </Elements>
+              )
+            }
           }
         />
       </Switch>

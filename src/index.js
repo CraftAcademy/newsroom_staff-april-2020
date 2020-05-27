@@ -11,14 +11,12 @@ import { StripeProvider } from 'react-stripe-elements'
 axios.defaults.baseURL = "http://localhost:3000/api"
 
 ReactDOM.render(
-  <React.StrictMode>
     <StripeProvider apiKey="pk_test_QicERB8w3kyqaYW3hUUQylRH">
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </StripeProvider>
-
-  </React.StrictMode>,
+,
   document.getElementById('root')
 );
 

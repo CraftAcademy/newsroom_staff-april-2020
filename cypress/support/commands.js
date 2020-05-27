@@ -21,7 +21,7 @@ Cypress.Commands.add("file_upload", (file, element, type) => {
 })
 
 Cypress.Commands.add('typeInStripeElement', (element, value) => {
-  cy.get(`${element} div iframe`)
+  cy.get(`#${element} iframe`)
     .then($iframe => {
       const $body = $iframe.contents().find("body")
       cy.wrap($body)

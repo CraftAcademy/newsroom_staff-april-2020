@@ -19,7 +19,7 @@ describe('user can purchase a subscription', () => {
     })
     cy.route({
       method: "POST",
-      url: "**/subscription",
+      url: "**/subscriptions",
       response: { message: "Transaction was successfull" }
     })
     cy.visit('/')
@@ -34,9 +34,16 @@ describe('user can purchase a subscription', () => {
     cy.get("button")
       .contains("Buy Subscription")
       .click()
-    cy.get("form[id='payment-form']").should('be.visible')
+    cy.get("[id='payment-interface']").should('be.visible')
     cy.wait(1000)
     cy.typeInStripeElement("cardnumber", "4242424242424242")
+    cy.typeInStripeElement("exp-date", "1221")
+    cy.typeInStripeElement("cvc", "123")
+    cy.get('button').contains('Submit').click()
+    cy.get('#subscription-message')
+      .should(
+        "contain",
+        "Transaction was successfull")
   });
 
 });
