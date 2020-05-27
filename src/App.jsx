@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoginForm from "./components/LoginForm";
 import CreateArticle from "./components/CreateArticle";
+import CreateSubscription from './components/CreateSubscription'
 import Header from "./components/Header";
 import { Switch, Route } from "react-router-dom";
 import auth from "./modules/auth";
@@ -48,6 +49,10 @@ const App = () => {
         <Route
           path="/write"
           component={CreateArticle}
+        />
+        <Route
+          path="/subscription"
+          component={CreateSubscription}
         />
       </Switch>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, Container } from "semantic-ui-react";
 import auth from "../modules/auth";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 const Header = (props) => {
   const logOut = async () => {
@@ -25,6 +25,11 @@ const Header = (props) => {
         {props.authenticated && (
           <>
             <Menu.Item active>Write</Menu.Item>
+            <Menu.Item>
+              <Link to="/subscription">
+                <button>Buy Subscription</button>
+              </Link>
+            </Menu.Item>
             <Menu.Item
               position="right"
               id="logout"
