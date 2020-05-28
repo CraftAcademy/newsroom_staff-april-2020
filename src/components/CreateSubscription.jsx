@@ -32,7 +32,7 @@ const CreateSubscription = props => {
   return (
     <>
       {subscriberStatus ?
-        <h1 id="subscription-message">{subscriptionMessage}</h1>
+        <p id="subscription-message">{subscriptionMessage}</p>
         :
         <div id="payment-interface">
           <label htmlFor="cardnumber">Card number</label>

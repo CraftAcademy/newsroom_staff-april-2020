@@ -29,3 +29,27 @@ Cypress.Commands.add('typeInStripeElement', (element, value) => {
         .type(value, { delay: 10 })
     })
 })
+
+Cypress.Commands.add('conditionalRoute', (options) => {
+  let xHookPackage;
+  const xHookUrl = 'https://unpkg.com/xhook@latest/dist/xhook.min.js';
+  cy.request(xHookUrl)
+    .then(response => {
+      xHookPackage = response.body;
+    });
+  Cypress.on('window:before:load', win => {
+    win.eval(xHookPackage);
+    win.xhook.before(request => {
+      if (request.method === options.method
+        && request.url.includes(options.url)
+        && (options.requiredKey && Object.keys(JSON.parse(request.body)).includes(options.requiredKey))
+      ) {
+        debugger
+        return {
+          status: options.status || 200,
+          text: options.response
+        }
+      }
+    })
+  })
+})
